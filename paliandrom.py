@@ -28,7 +28,7 @@ while i<=j:
     i+=1
     j-=1
 
-#Check if there exist a triple with sum = target
+#Check if there exist a triple with sum = target \\first
 arr=[1,2,3,4,5,6,7]
 i=0
 j=1
@@ -42,3 +42,31 @@ for i in range(0,len(arr)):
             z=arr[k]
             if x+y+z==target:
                 print(arr[i],arr[j],arr[k])
+
+#Check if there exist a triple with sum = target \\second
+arr=[1,2,3,4,5,6,7]
+target=10
+b=0
+set = set()
+for i in range(0,len(arr)-2):
+    for j in range(i+1,len(arr)):
+        b=target-arr[i]-arr[j]
+        if b in set and b>1 and b!=arr[i] and b!=arr[j]:
+            print(arr[i],arr[j],b)
+        else:
+            set.add(arr[j])
+
+#Check if there exist a triple with sum = target \\3rd
+arr=[1,2,3,4,5,6,7]
+target=10
+s=0
+for i in range(0,len(arr)-2):
+    left=i+1
+    right=len(arr)-1
+    s = arr[i]+arr[left]+arr[right]
+    if s==target:
+        print(True)
+    elif s < target:
+        left+=1
+    else:
+        right-=1
