@@ -9,12 +9,14 @@ if arr == nums:
 else:
     print("False")
 
+
 arr=["a","b","c","b","a"]
 n=len(arr)
 for i in range(n//2):
     if arr[i]!=arr[n-i-1]:
         print("false")
 print("true")
+
 
 #paliandrom using two pointers
 arr=["a","b","a"]
@@ -27,6 +29,42 @@ while i<=j:
         break
     i+=1
     j-=1
+
+
+#calculate the pivot index of this array
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        rightsum=0
+        i=0
+        for i in range(0,len(nums)):
+            rightsum += nums[i]
+            i+=1
+        leftsum=0
+        for i in range(0,len(nums)):
+            rightsum -= nums[i]
+            if leftsum == rightsum:
+                return i
+            leftsum += nums[i]
+        return -1
+
+#prefix sum suffix sum
+arr=[4,3,2,1,5,4]
+n=len(arr)
+p = [0] * n
+p[0]=arr[0]
+for i in range(1,len(arr)):
+    p[i]=p[i-1]+arr[i]
+print(p)
+s = [0] * n
+s[n-1]=arr[n-1]
+for i in range(n-2,-1,-1):
+    s[i]=s[i+1]+arr[i]
+s = s[::-1]
+print(s)
+for i in range(0,n):
+    if p[i]==s[i]:
+        print(i)
+
 
 #Check if there exist a triple with sum = target \\first
 arr=[1,2,3,4,5,6,7]
@@ -42,6 +80,7 @@ for i in range(0,len(arr)):
             z=arr[k]
             if x+y+z==target:
                 print(arr[i],arr[j],arr[k])
+
 
 #Check if there exist a triple with sum = target \\second
 arr=[1,2,3,4,5,6,7]
