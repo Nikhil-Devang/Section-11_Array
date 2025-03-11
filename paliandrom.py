@@ -109,3 +109,31 @@ for i in range(0,len(arr)-2):
         left+=1
     else:
         right-=1
+
+
+nums=[3,4,1,6]
+rightsum=0
+i=0
+for i in range(0,len(nums)):
+    rightsum += nums[i]
+leftsum=0
+for i in range(0,len(nums)):
+    rightsum -= nums[i]
+    leftsum+=nums[i]
+    if leftsum == rightsum:
+        print("True")
+print("false")
+
+
+nums=[1,5,11,5]
+rightsum=0
+for i in range(0,len(nums)):
+    rightsum += nums[i]
+leftsum=0
+for i in range(0,len(nums)):
+    rightsum -= nums[i]
+    leftsum=nums[i]
+    if leftsum == rightsum:
+        print(True)
+    rightsum += nums[i]
+print(False)
